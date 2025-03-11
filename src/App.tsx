@@ -1,19 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './App.css';
+import { useState, useEffect } from "react";
+import "./App.css";
 
-function App() {
-  const [advice, setAdvice] = useState(null);
+interface AdviceSlip {
+  slip: {
+    id: number;
+    advice: string;
+  };
+}
+
+const App = () => {
+  const [advice, setAdvice] = useState<string>("");
 
   useEffect(() => {
     FetchAdvice();
   }, []);
 
   const FetchAdvice = () => {
-    axios
-      .get('	https://api.adviceslip.com/advice')
+    fetch("https://api.adviceslip.com/advice")
       .then((response) => {
-        const { advice } = response.data.slip;
+        return response.json();
+      })
+      .then((json: AdviceSlip) => {
+        const { advice } = json.slip;
         setAdvice(advice);
       })
       .catch((error) => {
@@ -31,6 +39,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

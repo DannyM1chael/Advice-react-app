@@ -7,9 +7,8 @@
 
 .app {
   height: 100%;
-  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./assets/city.jpg');
+  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/city.webp') center;
   background-size: cover;
-  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
